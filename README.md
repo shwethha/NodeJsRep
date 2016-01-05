@@ -1,6 +1,4 @@
 # NodeJsRep
-Training repository 
-Proxy Server
 This is a Proxy Server for Node.js submitted as the pre-work requirement for CodePath.
 
 Time spent: [5 hrs]
@@ -13,6 +11,7 @@ Completed:
  Required: The destination server is configurable via the x-destination-url header
  Required: Client requests and respones are printed to stdout
  Required: The --logfile argument outputs all logs to the file specified instead of stdout
+
 Walkthrough Gif:
 
 Video Walkthrough
