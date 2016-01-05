@@ -1,2 +1,0 @@
-# NodeJsRep
-Training repository 
