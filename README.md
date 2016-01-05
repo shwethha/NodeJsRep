@@ -16,7 +16,7 @@ Completed:
 Walkthrough Gif:
 
 Video Walkthrough
-
+![](https://raw.githubusercontent.com/pulkitguptasjsu/Node.js-Bootcamp/master/screenCapture.gif)
 Starting the Server
 
 babel-node index.js (npm start/ bode not working on windows machine)
