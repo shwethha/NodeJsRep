@@ -18,4 +18,4 @@ Completed:
 
 Walkthrough Gif:
 
-![Video Walkthrough]()
+![Video Walkthrough](https://github.com/shwethha/NodeJsRep/blob/master/cli-utilities/assignment1.gif)
