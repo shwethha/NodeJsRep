@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+    <title>Authenticator</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <style>
+        body         { padding-top:80px; word-wrap:break-word; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="page-header text-center">
+        <h1><span class="fa fa-user"></span> Profile Page</h1>
+        <a href="/blog/<%= user.blogTitle %>" class="btn btn-default btn-sm">Blog</a>
+        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+        <a href="/post" class="btn btn-default btn-sm">Create Post</a>
+    </div>
+
+    <% if (typeof message !== 'undefined' && message.length > 0) { %>
+        <div class="alert alert-danger"><%= message %></div>
+    <% } %>
+
+    <div class="row">
+
+        <!-- LOCAL INFORMATION -->
+        <div class="well">
+            <h3><span class="fa fa-laptop"></span> Local</h3>
+
+                <p>
+                    <strong>id</strong>: <%= user._id %><br>
+                    <strong>email</strong>: <%= user.email %><br>
+                    <strong>blog title</strong>: <%= user.blogTitle %> <br>
+                    <strong>blog description</strong>: <%= user.blogDescription %>
+
+                </p>
+
+                <h4><span class="fa fa-laptop"></span> Posts</h4>  
+                <ul>
+                    <% for(var i=0; i<posts.length; i++) {%>
+                        <li>
+                            <% if (posts[i].image && posts[i].image.data.length > 0) {  %>
+                               <img src="<%= posts[i].displayImage %>" style="height: 50px; width:50px"/>
+                            <% } %>
+                            <b> <%= posts[i].title %> </b>
+                            <span>Created At <%= posts[i].created_at %> </span>
+
+                            <div class="btn-group">
+                                <a class="btn" href="/post/<%= posts[i].id %>">Edit</a>
+                                <a class="btn"href="/deletePost/<%= posts[i].id %>">Delete</a>
+                            </div>
+                       </li>
+                    <% } %>
+                </ul>
+
+                <h4><span class="fa fa-laptop"></span> Comments</h4>
+
+                 <ul>
+                    <% for(var i=0; i<posts.length; i++) {
+                        for(var j=0; j<posts[i].comments.length;j++){ %>
+                       <li>
+                            <div class="lead"><%= posts[i].comments[j].content %> </div><em> Added by <%= posts[i].comments[j].username %> on <%= posts[i].comments[j].date %> </em>
+                            <a class="btn" href="/post/<%= posts[i].id %>">
+                                Related Post
+                            </a>
+                       </li>
+                    <% }} %>
+                </ul>
+        </div>
+
+
+</div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+    <title>Authenticator</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <style>
+        body         { padding-top:80px; }
+    </style>
+</head>
+<body>
+<div class="container">
+	<div class="col-sm-6 col-sm-offset-3">
+	
+    <h1><span class="fa fa-sign-in"></span><%= blogTitle %> </h1>
+	
+    <div class="page-header">
+
+                <ul>
+                    <% for(var i=0; i<posts.length; i++) {%>
+                      <li><h6>  <a class="btn" href="/post/<%= posts[i].id %>"> <%= posts[i].title %> </a> </h6>
+                       <hr>
+                        <p>  <%= posts[i].content %> </p>
+                       <% if (posts[i].image && posts[i].image.data.length > 0) {  %>
+                               <img src="<%= posts[i].displayImage %>" style="height: 400px; width:400px"/>
+                            <% } %>
+                        <h5>
+                        Comments
+                        </h5>
+                         <% for(var j=posts[i].comments.length-1; j>=0; j--) {  %>
+                             <span><%= posts[i].comments[j].content %></span> <br>
+                             <span>  <%= posts[i].comments[j].username %> </span> <br>
+                            <span>  <%= posts[i].comments[j].date %> </span> <hr>
+
+                             
+                         <%}%>    
+                       
+                       
+                       <h5>Add New Comment </h5>
+                            <form  action="/addComment/<%= posts[i]._id %>" method="post" >
+                                <!-- <textarea class="form-control" rows="3" id="comment"></textarea> -->
+                                  <input type="textarea" class="form-control" name="comment" value="">
+                                 <button type="submit" class="btn btn-warning btn-sm" name="postComment" > Save</button>
+                            </form>
+                             
+                              <!--TO DO  creating and update dates-->
+                            <hr>
+                           
+                       </li>
+                    <% } %>
+                </ul>
+
+    </div>
+
+
+</div>
+
+</body>
+</html>
